@@ -54,5 +54,17 @@ RecyclerView比ListView强大的地方就在于RecyclerView是可以定义横向
             }
         });
 ```
+最终的结果如图（瀑布流布局）：
+![02.png](/img/RecyclerView.png "02")
 
+### UIBestPractice
+通过上面的学习，使用RecyclerView最终制作一个类似聊天框的界面。
 
+定义[Msg](/UIBestPractice/app/src/main/java/lyp/com/uibestpractice/Msg.java)类用来表示消息，将消息分为收到的消息和发送得消息。
+定义[主界面](/UIBestPractice/app/src/main/res/layout/activity_main.xml)，定义RecyclerView的子项布局[msg_item.xml](/UIBestPractice/app/src/main/res/layout/msg_item.xml),定义适配器[MsgAdapter](/UIBestPractice/app/src/main/java/lyp/com/uibestpractice/MsgAdapter.java)
+最终在[MainActivity](/UIBestPractice/app/src/main/java/lyp/com/uibestpractice/MainActivity.java)中传入数据，并注册发送事件监听器，由于要保证新发的消息总是在最后，所以用到适配器（Adapter）中的otifyItemInserted方法来刷新显示，RecyclerView中的scrollToPosition方法用来定位
+
+最终运行的结果如下两图
+
+![03.png](/img/UIBestPractice_1.png "03")  
+![04.png](/img/UIBestPractice_2.png "04") 
