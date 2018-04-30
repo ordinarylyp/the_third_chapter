@@ -30,4 +30,29 @@ RecyclerView是比ListView更加强大的滚动控件，使用这个控件的时
 
 同样定义[fruit_item.xml](/RecyclerViewTest/app/src/main/res/layout/fruit_item.xml)布局和Fruit类以及自定义适配器[FruitAdapter](/RecyclerViewTest/app/src/main/java/lyp/com/recyclerviewtest/FruitAdapter.java),和ListView不同，这次的适配器继承自RecyclerView.Adapter，并将泛型指定为FruitAdapter.ViewHolder,其中ViewHolder是在FruitAdapter中定义的内部类。
 
-RecyclerView比ListView强大的地方就在于RecyclerView是可以定义横向滚动效果的，只要在布局文件中设置“android:orientation="vertical"”,以及在[MainActivity](/RecyclerViewTest/app/src/main/java/lyp/com/listviewtest/MainActivity.java)中设置layoutManger（RecyclerView的布局方式）即可。
+RecyclerView比ListView强大的地方就在于RecyclerView是可以定义横向滚动效果的，只要在布局文件中设置“android:orientation="vertical"”,以及在[MainActivity](/RecyclerViewTest/app/src/main/java/lyp/com/recyclerviewtest/MainActivity.java)中设置layoutManger（RecyclerView的布局方式）即可。
+
+同时还有 GridLayoutManager（网格式布局）和 StaggeredGridLayoutManager（瀑布流布局）两种布局方式，都可以在[MainActivity](/RecyclerViewTest/app/src/main/java/lyp/com/recyclerviewtest/MainActivity.java)设置实现
+
+和ListView不同，RecyclerView是没有子项点击事件的监听器的，所有的事件均由具体的View去注册，所以事件编写是需要在[FruitAdapter](/RecyclerViewTest/app/src/main/java/lyp/com/recyclerviewtest/FruitAdapter.java)中完成的，具体代码如下：
+```Java
+        final ViewHolder holder= new ViewHolder(view);
+        holder.fruitview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position =holder.getAdapterPosition();//通过为止找到相应的实例
+                Fruit fruit=mFruitList.get(position);
+                Toast.makeText(v.getContext(),"you clicked view "+fruit.getName(),Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.fruitImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position=holder.getAdapterPosition();
+                Fruit fruit=mFruitList.get(position);
+                Toast.makeText(v.getContext(),"you clicked image "+fruit.getName(),Toast.LENGTH_SHORT).show();
+            }
+        });
+```
+
+
