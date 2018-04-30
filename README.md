@@ -17,3 +17,6 @@
 这个项目讲的最主要的是自定义控件，通过定义一个[title.xml](https://github.com/ordinarylyp/the_third_chapter/blob/master/UICustomViews/app/src/main/res/layout/title.xml),将其引入到activity_mian.xml中，再将系统自带的标题栏隐藏掉，从而创建一个类似iphone标题栏的效果
 ### ListViewText
 这个项目主要讲的就是Android中最常用的一个控件ListView，在有大量数据需要展示时就需要用到，是最常用的控件之一，也是需要掌握的重点和难点。
+
+要想使用ListView首先就要现在[activity_main.xml](https://github.com/ordinarylyp/the_third_chapter/blob/master/ListViewTest/app/src/main/res/layout/activity_main.xml)中定义ListView组件。
+ 需要注意的是数据是无法直接传递给ListView的，需要使用适配器（Adapter）来完成，其中最常用的就是ArrayAdapter，它可以通过泛型来指定适配的数据类型，具体如何使用可以查看代码中的[注释](https://github.com/ordinarylyp/the_third_chapter/blob/master/ListViewTest/app/src/main/java/lyp/com/listviewtest/MainActivity.java)
