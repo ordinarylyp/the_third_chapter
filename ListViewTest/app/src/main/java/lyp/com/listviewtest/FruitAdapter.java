@@ -29,7 +29,7 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
         Fruit fruit=getItem(position);//传递实例
  //       View view= LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
         View view;
-        ViewHolder viewHolder;
+        ViewHolder viewHolder;//用于对控件的实例进行缓存
         if(convertView==null){ //如果convertView为空再使用LayoutInflater重新加载布局
             view= LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
             viewHolder=new ViewHolder();
